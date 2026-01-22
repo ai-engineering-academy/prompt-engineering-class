@@ -78,7 +78,7 @@ def demo_01_prompt_vago():
     """
     DEMONSTRAÇÃO 1: Prompt Vago
 
-    Problema: Não definimos quem a IA é, para quem escreve, nem o formato.
+    Problema: Não definimos quem o modelo é, para quem escreve, nem o formato.
     Estamos deixando tudo aberto para interpretação.
     """
     print("\n" + "=" * 60)
@@ -341,79 +341,13 @@ Sempre mostre seu raciocínio antes da resposta."""
 
 
 # =============================================================================
-# MÓDULO 4: TEMPERATURE (Criatividade vs Precisão)
-# =============================================================================
-# Demonstra como o parâmetro temperature afeta a criatividade/determinismo
-# "Mesma pergunta, mesmo modelo. Só mudei o grau de aleatoriedade."
-# -----------------------------------------------------------------------------
-
-def demo_08_temperature_baixa():
-    """
-    DEMONSTRAÇÃO 8: Temperature Baixa (Código / Fato)
-
-    temperature=0: Determinístico, previsível, consistente
-    Use para: código, análises, dados estruturados, fatos
-    """
-    print("\n" + "=" * 60)
-    print("DEMO 8: TEMPERATURE BAIXA (0) - PRECISÃO")
-    print("=" * 60)
-
-    system_prompt = """Você é um instrutor de programação Python experiente.
-
-Estilo de resposta:
-- Explicações claras e técnicas
-- Exemplos práticos quando apropriado
-- Linguagem profissional"""
-
-    user_prompt = "Explique o que é uma função em Python."
-
-    print(f"\n[System Prompt]: Instrutor de Python")
-    print(f"[User Prompt]: {user_prompt}")
-    print(f"[Temperature]: 0\n")
-    print("-" * 40)
-    print("Resposta:")
-    print(call_llm(user_prompt, system_prompt=system_prompt, temperature=0))
-
-
-def demo_09_temperature_alta():
-    """
-    DEMONSTRAÇÃO 9: Temperature Alta (Criatividade)
-
-    temperature=0.9: Criativo, variado, menos previsível
-    Use para: brainstorm, criatividade, marketing, nomes
-    """
-    print("\n" + "=" * 60)
-    print("DEMO 9: TEMPERATURE ALTA (0.9) - CRIATIVIDADE")
-    print("=" * 60)
-
-    system_prompt = """Você é um diretor criativo de uma agência de branding inovadora.
-
-Estilo:
-- Pense fora da caixa
-- Seja ousado e memorável
-- Considere impacto emocional"""
-
-    user_prompt = "Crie um nome criativo para uma startup de IA educacional."
-
-    print(f"\n[System Prompt]: Diretor criativo de branding")
-    print(f"[User Prompt]: {user_prompt}")
-    print(f"[Temperature]: 0.9\n")
-    print("-" * 40)
-    print("Resposta:")
-    print(call_llm(user_prompt, system_prompt=system_prompt, temperature=0.9))
-
-    print("\n" + "-" * 40)
-    print("Best Practice: 'System prompt + temperature = controle fino'")
-
-
-# =============================================================================
-# MÓDULO 5: MULTI-AGENTES (LLM avaliando LLM)
+# MÓDULO 4: MULTI-AGENTES (LLM avaliando LLM)
 # =============================================================================
 # Demonstra como usar um segundo LLM para validar/auditar respostas
 # "Aqui a IA não é autora. Ela é parte do sistema de controle."
 # -----------------------------------------------------------------------------
 
-def demo_10_multi_agentes():
+def demo_08_multi_agentes():
     """
     DEMONSTRAÇÃO 10: Auditor de Respostas (Multi-Agentes)
 
@@ -469,6 +403,73 @@ Formato de resposta:
 
     print("\n" + "-" * 40)
     print("Best Practice: 'Cada agente tem seu próprio system prompt'")
+
+
+
+# =============================================================================
+# MÓDULO 5: TEMPERATURE (Criatividade vs Precisão)
+# =============================================================================
+# Demonstra como o parâmetro temperature afeta a criatividade/determinismo
+# "Mesma pergunta, mesmo modelo. Só mudei o grau de aleatoriedade."
+# -----------------------------------------------------------------------------
+
+def demo_09_temperature_baixa():
+    """
+    DEMONSTRAÇÃO 8: Temperature Baixa (Código / Fato)
+
+    temperature=0: Determinístico, previsível, consistente
+    Use para: código, análises, dados estruturados, fatos
+    """
+    print("\n" + "=" * 60)
+    print("DEMO 8: TEMPERATURE BAIXA (0) - PRECISÃO")
+    print("=" * 60)
+
+    system_prompt = """Você é um instrutor de programação Python experiente.
+
+Estilo de resposta:
+- Explicações claras e técnicas
+- Exemplos práticos quando apropriado
+- Linguagem profissional"""
+
+    user_prompt = "Explique o que é uma função em Python."
+
+    print(f"\n[System Prompt]: Instrutor de Python")
+    print(f"[User Prompt]: {user_prompt}")
+    print(f"[Temperature]: 0\n")
+    print("-" * 40)
+    print("Resposta:")
+    print(call_llm(user_prompt, system_prompt=system_prompt, temperature=0))
+
+
+def demo_10_temperature_alta():
+    """
+    DEMONSTRAÇÃO 9: Temperature Alta (Criatividade)
+
+    temperature=0.9: Criativo, variado, menos previsível
+    Use para: brainstorm, criatividade, marketing, nomes
+    """
+    print("\n" + "=" * 60)
+    print("DEMO 9: TEMPERATURE ALTA (0.9) - CRIATIVIDADE")
+    print("=" * 60)
+
+    system_prompt = """Você é um diretor criativo de uma agência de branding inovadora.
+
+Estilo:
+- Pense fora da caixa
+- Seja ousado e memorável
+- Considere impacto emocional"""
+
+    user_prompt = "Crie um nome criativo para uma startup de IA educacional."
+
+    print(f"\n[System Prompt]: Diretor criativo de branding")
+    print(f"[User Prompt]: {user_prompt}")
+    print(f"[Temperature]: 0.9\n")
+    print("-" * 40)
+    print("Resposta:")
+    print(call_llm(user_prompt, system_prompt=system_prompt, temperature=0.9))
+
+    print("\n" + "-" * 40)
+    print("Best Practice: 'System prompt + temperature = controle fino'")
 
 
 # =============================================================================
@@ -594,10 +595,10 @@ def menu_principal():
 if __name__ == "__main__":
 
     # OPÇÃO 1: Menu interativo (recomendado para aula)
-    menu_principal()
+    # menu_principal()
 
     # OPÇÃO 2: Executar demos específicas diretamente
-    # demo_01_prompt_vago()
+    demo_01_prompt_vago()
     # demo_02_prompt_estruturado()
     # demo_03_prompt_frankenstein()
     # demo_04_pipeline_correto()
